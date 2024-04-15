@@ -1,0 +1,14 @@
+version: "3.8"
+services: 
+    server:
+        container_name: bamboo-server
+        build: ./
+        ports:
+            - 54663:54663
+            - 8085:8085
+        volumes:
+            - ./server:/var/atlassian/application-data/bamboo
+            - /var/run/docker.sock:/var/run/docker.sock 
+        init: true
+        extra_hosts:
+            - my-repo:192.168.1.10
